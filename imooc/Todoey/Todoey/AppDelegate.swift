@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // the place that store the local file
         print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
+        
+        // print(Realm.Configuration.defaultConfiguration.fileURL)
+        
+        do {
+            _ = try Realm()
+        } catch {
+            print("error init realm, \(error)")
+        }
+        
+        
         
         return true
     }
