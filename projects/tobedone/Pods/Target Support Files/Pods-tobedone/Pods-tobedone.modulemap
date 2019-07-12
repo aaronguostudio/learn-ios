@@ -1,0 +1,6 @@
+framework module Pods_tobedone {
+  umbrella header "Pods-tobedone-umbrella.h"
+
+  export *
+  module * { export * }
+}

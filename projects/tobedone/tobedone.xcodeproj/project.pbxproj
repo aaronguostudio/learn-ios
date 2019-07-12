@@ -3,18 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6308B3503EB996DEE9945D79 /* Pods_tobedone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF49EC34BE389DA0BC203F1 /* Pods_tobedone.framework */; };
 		CBDEB72722D58DBE003B105E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDEB72622D58DBE003B105E /* AppDelegate.swift */; };
 		CBDEB72922D58DBE003B105E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDEB72822D58DBE003B105E /* LoginViewController.swift */; };
 		CBDEB72C22D58DBE003B105E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBDEB72A22D58DBE003B105E /* Main.storyboard */; };
 		CBDEB72E22D58DBF003B105E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBDEB72D22D58DBF003B105E /* Assets.xcassets */; };
 		CBDEB73122D58DBF003B105E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBDEB72F22D58DBF003B105E /* LaunchScreen.storyboard */; };
+		CBDEB74022D83D02003B105E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBDEB73F22D83D02003B105E /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		93D8A80ECBD32CACF3924AC7 /* Pods-tobedone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tobedone.release.xcconfig"; path = "Target Support Files/Pods-tobedone/Pods-tobedone.release.xcconfig"; sourceTree = "<group>"; };
+		9DF49EC34BE389DA0BC203F1 /* Pods_tobedone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tobedone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B066A93CE718CAA341772074 /* Pods-tobedone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tobedone.debug.xcconfig"; path = "Target Support Files/Pods-tobedone/Pods-tobedone.debug.xcconfig"; sourceTree = "<group>"; };
 		CBDEB72322D58DBE003B105E /* tobedone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tobedone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBDEB72622D58DBE003B105E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBDEB72822D58DBE003B105E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +27,7 @@
 		CBDEB72D22D58DBF003B105E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBDEB73022D58DBF003B105E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBDEB73222D58DBF003B105E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBDEB73F22D83D02003B105E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6308B3503EB996DEE9945D79 /* Pods_tobedone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03A8D2C2D8D1998190F4C237 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B066A93CE718CAA341772074 /* Pods-tobedone.debug.xcconfig */,
+				93D8A80ECBD32CACF3924AC7 /* Pods-tobedone.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CBDEB71A22D58DBE003B105E = {
 			isa = PBXGroup;
 			children = (
 				CBDEB72522D58DBE003B105E /* tobedone */,
 				CBDEB72422D58DBE003B105E /* Products */,
+				03A8D2C2D8D1998190F4C237 /* Pods */,
+				EE768E770A361A4CB6D39712 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +72,55 @@
 		CBDEB72522D58DBE003B105E /* tobedone */ = {
 			isa = PBXGroup;
 			children = (
-				CBDEB72622D58DBE003B105E /* AppDelegate.swift */,
-				CBDEB72822D58DBE003B105E /* LoginViewController.swift */,
-				CBDEB72A22D58DBE003B105E /* Main.storyboard */,
+				CBDEB73A22D83AF6003B105E /* Controller */,
+				CBDEB73922D83AE9003B105E /* Model */,
+				CBDEB73822D83AC4003B105E /* View */,
 				CBDEB72D22D58DBF003B105E /* Assets.xcassets */,
-				CBDEB72F22D58DBF003B105E /* LaunchScreen.storyboard */,
-				CBDEB73222D58DBF003B105E /* Info.plist */,
+				CBDEB73C22D83CBD003B105E /* SupportingFiles */,
 			);
 			path = tobedone;
+			sourceTree = "<group>";
+		};
+		CBDEB73822D83AC4003B105E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CBDEB72A22D58DBE003B105E /* Main.storyboard */,
+				CBDEB72F22D58DBF003B105E /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CBDEB73922D83AE9003B105E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CBDEB73A22D83AF6003B105E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CBDEB72622D58DBE003B105E /* AppDelegate.swift */,
+				CBDEB72822D58DBE003B105E /* LoginViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CBDEB73C22D83CBD003B105E /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				CBDEB73F22D83D02003B105E /* GoogleService-Info.plist */,
+				CBDEB73222D58DBF003B105E /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		EE768E770A361A4CB6D39712 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9DF49EC34BE389DA0BC203F1 /* Pods_tobedone.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +130,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CBDEB73522D58DBF003B105E /* Build configuration list for PBXNativeTarget "tobedone" */;
 			buildPhases = (
+				BE9B4467F5BB36E65BE2333D /* [CP] Check Pods Manifest.lock */,
 				CBDEB71F22D58DBE003B105E /* Sources */,
 				CBDEB72022D58DBE003B105E /* Frameworks */,
 				CBDEB72122D58DBE003B105E /* Resources */,
+				A68FBE35934FD9634EC07FEE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,12 +184,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBDEB73122D58DBF003B105E /* LaunchScreen.storyboard in Resources */,
+				CBDEB74022D83D02003B105E /* GoogleService-Info.plist in Resources */,
 				CBDEB72E22D58DBF003B105E /* Assets.xcassets in Resources */,
 				CBDEB72C22D58DBE003B105E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A68FBE35934FD9634EC07FEE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tobedone/Pods-tobedone-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tobedone/Pods-tobedone-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tobedone/Pods-tobedone-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE9B4467F5BB36E65BE2333D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tobedone-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CBDEB71F22D58DBE003B105E /* Sources */ = {
@@ -280,11 +384,12 @@
 		};
 		CBDEB73622D58DBF003B105E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B066A93CE718CAA341772074 /* Pods-tobedone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 89SDSYJRUP;
-				INFOPLIST_FILE = tobedone/Info.plist;
+				INFOPLIST_FILE = tobedone/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -298,11 +403,12 @@
 		};
 		CBDEB73722D58DBF003B105E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93D8A80ECBD32CACF3924AC7 /* Pods-tobedone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 89SDSYJRUP;
-				INFOPLIST_FILE = tobedone/Info.plist;
+				INFOPLIST_FILE = tobedone/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
