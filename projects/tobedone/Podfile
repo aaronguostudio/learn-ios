@@ -12,5 +12,7 @@ target 'tobedone' do
   pod 'Firebase/Database'
   pod 'SVProgressHUD'
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+  pod 'RealmSwift'
+  pod 'SwipeCellKit', '2.5.4'
 
 end

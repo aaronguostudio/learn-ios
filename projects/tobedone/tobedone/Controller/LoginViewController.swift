@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var login: UIButton!
     @IBOutlet weak var signup: UIButton!
+    @IBOutlet weak var errorMessage: UILabel!
     
     let LOGIN = "Login"
     let SIGNUP = "Sign Up"
@@ -27,12 +28,14 @@ class LoginViewController: UIViewController {
         email.delegate = self
         password.delegate = self
         observeKeyboard()
-        email.placeholder = "Enter login email"
-        password.placeholder = "Enter login password"
+        email.placeholder = "Enter email"
+        password.placeholder = "Enter password"
         signup.setTitleColor(UIColor.init(hexString: "#94c7f2"), for: .normal)
         authType = LOGIN
     }
     
+    // todo handle different error message
+    // hide error message on input change
     @IBAction func handleStart(_ sender: Any) {
         
         SVProgressHUD.show()
@@ -42,6 +45,7 @@ class LoginViewController: UIViewController {
                 (user, error) in
                 SVProgressHUD.dismiss()
                 if error != nil {
+                    self.errorMessage.text = "Failed"
                     print("error \(error!)")
                 } else {
                     print(user!)
@@ -53,6 +57,7 @@ class LoginViewController: UIViewController {
                 (user, error) in
                 SVProgressHUD.dismiss()
                 if error != nil {
+                    self.errorMessage.text = "Failed"
                     print("Sign up error \(error!)")
                 } else {
                     self.performSegue(withIdentifier: "goToCategories", sender: self)

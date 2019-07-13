@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		6308B3503EB996DEE9945D79 /* Pods_tobedone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF49EC34BE389DA0BC203F1 /* Pods_tobedone.framework */; };
+		CB7FBC6822DA282000E2F125 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7FBC6722DA282000E2F125 /* CategoryViewController.swift */; };
+		CB7FBC6A22DA283500E2F125 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7FBC6922DA283500E2F125 /* ItemViewController.swift */; };
+		CB7FBC6C22DA29C400E2F125 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7FBC6B22DA29C400E2F125 /* Category.swift */; };
+		CB7FBC6E22DA6BC200E2F125 /* Swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7FBC6D22DA6BC200E2F125 /* Swipe.swift */; };
+		CB7FBC7022DA800E00E2F125 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7FBC6F22DA800E00E2F125 /* Item.swift */; };
 		CBDEB72722D58DBE003B105E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDEB72622D58DBE003B105E /* AppDelegate.swift */; };
 		CBDEB72922D58DBE003B105E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDEB72822D58DBE003B105E /* LoginViewController.swift */; };
 		CBDEB72C22D58DBE003B105E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBDEB72A22D58DBE003B105E /* Main.storyboard */; };
@@ -20,6 +25,11 @@
 		93D8A80ECBD32CACF3924AC7 /* Pods-tobedone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tobedone.release.xcconfig"; path = "Target Support Files/Pods-tobedone/Pods-tobedone.release.xcconfig"; sourceTree = "<group>"; };
 		9DF49EC34BE389DA0BC203F1 /* Pods_tobedone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tobedone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B066A93CE718CAA341772074 /* Pods-tobedone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tobedone.debug.xcconfig"; path = "Target Support Files/Pods-tobedone/Pods-tobedone.debug.xcconfig"; sourceTree = "<group>"; };
+		CB7FBC6722DA282000E2F125 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		CB7FBC6922DA283500E2F125 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		CB7FBC6B22DA29C400E2F125 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		CB7FBC6D22DA6BC200E2F125 /* Swipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swipe.swift; sourceTree = "<group>"; };
+		CB7FBC6F22DA800E00E2F125 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		CBDEB72322D58DBE003B105E /* tobedone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tobedone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBDEB72622D58DBE003B105E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBDEB72822D58DBE003B105E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +103,8 @@
 		CBDEB73922D83AE9003B105E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CB7FBC6B22DA29C400E2F125 /* Category.swift */,
+				CB7FBC6F22DA800E00E2F125 /* Item.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -102,6 +114,9 @@
 			children = (
 				CBDEB72622D58DBE003B105E /* AppDelegate.swift */,
 				CBDEB72822D58DBE003B105E /* LoginViewController.swift */,
+				CB7FBC6722DA282000E2F125 /* CategoryViewController.swift */,
+				CB7FBC6922DA283500E2F125 /* ItemViewController.swift */,
+				CB7FBC6D22DA6BC200E2F125 /* Swipe.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -239,7 +254,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB7FBC6E22DA6BC200E2F125 /* Swipe.swift in Sources */,
 				CBDEB72922D58DBE003B105E /* LoginViewController.swift in Sources */,
+				CB7FBC6C22DA29C400E2F125 /* Category.swift in Sources */,
+				CB7FBC6A22DA283500E2F125 /* ItemViewController.swift in Sources */,
+				CB7FBC7022DA800E00E2F125 /* Item.swift in Sources */,
+				CB7FBC6822DA282000E2F125 /* CategoryViewController.swift in Sources */,
 				CBDEB72722D58DBE003B105E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
