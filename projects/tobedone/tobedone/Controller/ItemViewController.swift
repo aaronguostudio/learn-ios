@@ -46,7 +46,7 @@ class ItemViewController: Swipe {
                 self.tableView.reloadData()
             }
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alert.addTextField {
             alertTextField in
             alertTextField.placeholder = "Create new item"

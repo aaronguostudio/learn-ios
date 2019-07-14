@@ -46,9 +46,9 @@ class LoginViewController: UIViewController {
                 SVProgressHUD.dismiss()
                 if error != nil {
                     self.errorMessage.text = "Failed"
-                    print("error \(error!)")
+                    print("Login error \(error!)")
                 } else {
-                    print(user!)
+//                    self.currentUser = user?.user
                     self.performSegue(withIdentifier: "goToCategories", sender: self)
                 }
             }
@@ -60,15 +60,21 @@ class LoginViewController: UIViewController {
                     self.errorMessage.text = "Failed"
                     print("Sign up error \(error!)")
                 } else {
+                    print("> \(user!)")
                     self.performSegue(withIdentifier: "goToCategories", sender: self)
                 }
             }
             default:
             print("default")
         }
-        
-        
     }
+    
+    //MARK: - prepare segue
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let navVC = segue.destination as! UINavigationController
+//        let categoryVC = navVC.viewControllers.first as! CategoryViewController
+//        categoryVC.currentUser = currentUser
+//    }
     
     @IBAction func toggleAuthType(_ sender: Any) {
         let targetButton = sender as! UIButton

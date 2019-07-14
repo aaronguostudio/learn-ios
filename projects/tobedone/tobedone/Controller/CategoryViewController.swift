@@ -8,14 +8,24 @@
 
 import UIKit
 import RealmSwift
+import Firebase
 
 class CategoryViewController: Swipe {
     
     let realm = try! Realm()
     var categories: Results<Category>?
+    var uid: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let user = Auth.auth().currentUser
+        if let user = user {
+            uid = user.uid
+        } else {
+            fatalError("Unauthoized")
+        }
+        
         loadCategories()
     }
 
@@ -52,13 +62,11 @@ class CategoryViewController: Swipe {
             
             let newCategory = Category()
             newCategory.name = textField.text!
+            newCategory.uid = self.uid!
             self.saveCategory(category: newCategory)
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default) {
-            action in
-            self.cancelCategory()
-        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
         alert.addTextField {
             alertTextField in
@@ -73,6 +81,31 @@ class CategoryViewController: Swipe {
     
     func cancelCategory () {
         
+    }
+    
+    //MARK: - delete category
+    override func updateModel(at indexPath: IndexPath) {
+        
+        print("delete item")
+        if let selectedCategory = categories?[indexPath.row] {
+            
+            let alert = UIAlertController(title: "Delete this category?", message: "All items in this category will be deleted", preferredStyle: .alert)
+            let confirmAction = UIAlertAction(title: "Confirm", style: .default) {
+                action in
+                do {
+                    try self.realm.write {
+                        self.realm.delete(selectedCategory)
+                    }
+                } catch {
+                    print("Item deletion failed. \(error)")
+                }
+                self.tableView.reloadData()
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            alert.addAction(confirmAction)
+            alert.addAction(cancelAction)
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     //MARK: - save category
@@ -90,7 +123,7 @@ class CategoryViewController: Swipe {
     
     //MARK: - load categories
     func loadCategories () {
-        categories = realm.objects(Category.self)
+        categories = realm.objects(Category.self).filter("uid CONTAINS[cd] %@", uid!).sorted(byKeyPath: "name")
         tableView.reloadData()
     }
 }
