@@ -17,6 +17,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.sceneView.debugOptions = [
+            ARSCNDebugOptions.showFeaturePoints
+        ]
+        
         // Set the view's delegate
         sceneView.delegate = self
         
@@ -49,13 +53,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //        sceneView.scene.rootNode.addChildNode(sphereNode)
 //        sceneView.autoenablesDefaultLighting = true
         
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/diceCollada.scn")!
         
-        if let diceNode = scene.rootNode.childNode(withName: "Dice", recursively: true) {
-            diceNode.position = SCNVector3(x: 0, y: 0, z: -0.1)
-            sceneView.scene.rootNode.addChildNode(diceNode)
-        }
         
     }
     
@@ -64,6 +62,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
+        
+        configuration.planeDetection = .horizontal
         
         print("check if AR is supported")
         print(ARConfiguration.isSupported)
@@ -104,5 +104,71 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let touchLocation = touch.location(in: sceneView)
+            
+            let results = sceneView.hitTest(touchLocation, types: .existingPlaneUsingExtent)
+            
+            if let hitResult = results.first {
+                print(hitResult)
+                
+                // Create a new scene and place it on the plane
+                let scene = SCNScene(named: "art.scnassets/diceCollada.scn")!
+                
+                if let diceNode = scene.rootNode.childNode(withName: "Dice", recursively: true) {
+                    
+                    diceNode.position = SCNVector3(
+                        x: hitResult.worldTransform.columns.3.x,
+                        y: hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius,
+                        z: hitResult.worldTransform.columns.3.z
+                    )
+                    sceneView.scene.rootNode.addChildNode(diceNode)
+                    
+                    // arc4random_uniform(4) + 1
+                    // generate a random number 1 - 4
+                    let randomX = Float(arc4random_uniform(4) + 1) * (Float.pi/2)
+                    let randomZ = Float(arc4random_uniform(4) + 1) * (Float.pi/2)
+                    
+                    diceNode.runAction(
+                        SCNAction.rotateBy(
+                            x: CGFloat(randomX * 5),
+                            y: 0,
+                            z: CGFloat(randomZ * 5),
+                            duration: 0.5
+                        )
+                    )
+                }
+            }
+        }
+    }
+    
+    // will be triggered when found a horizontal plane
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        if anchor is ARPlaneAnchor {
+            let planeAnchor = anchor as! ARPlaneAnchor
+            
+            let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
+            
+            let planeNode = SCNNode()
+            
+            planeNode.position = SCNVector3(x: planeAnchor.center.x, y: 0, z: planeAnchor.center.z)
+            
+            // rotate the plane clockwise 90 degrees
+            planeNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2, 1, 0, 0)
+            
+            let gridMaterial = SCNMaterial()
+            
+            gridMaterial.diffuse.contents = UIImage(named: "art.scnassets/grid.png")
+            
+            plane.materials = [gridMaterial]
+            
+            planeNode.geometry = plane
+            node.addChildNode(planeNode)
+        } else {
+            return
+        }
     }
 }
