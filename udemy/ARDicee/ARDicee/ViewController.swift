@@ -11,6 +11,8 @@ import SceneKit
 import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
+    
+    var diceArray = [SCNNode]()
 
     @IBOutlet var sceneView: ARSCNView!
     
@@ -91,6 +93,25 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
 */
     
+    @IBAction func rollDice(_ sender: UIBarButtonItem) {
+        print("Roll")
+        rollAll()
+    }
+    
+    // after shake the phone
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        print("shake")
+        rollAll()
+    }
+    
+    @IBAction func clearAll(_ sender: UIBarButtonItem) {
+        if !diceArray.isEmpty {
+            for dice in diceArray {
+                dice.removeFromParentNode()
+            }
+        }
+    }
+    
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
         
@@ -125,24 +146,41 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         y: hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius,
                         z: hitResult.worldTransform.columns.3.z
                     )
+                    
+                    diceArray.append(diceNode)
+                    
                     sceneView.scene.rootNode.addChildNode(diceNode)
                     
-                    // arc4random_uniform(4) + 1
-                    // generate a random number 1 - 4
-                    let randomX = Float(arc4random_uniform(4) + 1) * (Float.pi/2)
-                    let randomZ = Float(arc4random_uniform(4) + 1) * (Float.pi/2)
+                    roll(dice: diceNode)
                     
-                    diceNode.runAction(
-                        SCNAction.rotateBy(
-                            x: CGFloat(randomX * 5),
-                            y: 0,
-                            z: CGFloat(randomZ * 5),
-                            duration: 0.5
-                        )
-                    )
+                    
                 }
             }
         }
+    }
+    
+    func rollAll() {
+        if !diceArray.isEmpty {
+            for dice in diceArray {
+                roll(dice: dice)
+            }
+        }
+    }
+    
+    func roll (dice: SCNNode) {
+        // arc4random_uniform(4) + 1
+        // generate a random number 1 - 4
+        let randomX = Float(arc4random_uniform(4) + 1) * (Float.pi/2)
+        let randomZ = Float(arc4random_uniform(4) + 1) * (Float.pi/2)
+        
+        dice.runAction(
+            SCNAction.rotateBy(
+                x: CGFloat(randomX * 5),
+                y: 0,
+                z: CGFloat(randomZ * 5),
+                duration: 0.5
+            )
+        )
     }
     
     // will be triggered when found a horizontal plane
